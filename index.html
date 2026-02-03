@@ -1,26 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Our Story</title>
-  <style>
-    body {
-      font-family: system-ui, -apple-system, sans-serif;
-      max-width: 720px;
-      margin: 40px auto;
-      padding: 0 16px;
-      line-height: 1.6;
-    }
-    h1 {
-      text-align: center;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Nourhan ❤️</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+  }
+  .container {
+    text-align: center;
+    color: #fff;
+  }
+  h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    animation: heartBeat 1s infinite;
+  }
+  @keyframes heartBeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+  }
+  button {
+    background: #fff;
+    color: #ff6f91;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  button:hover {
+    transform: scale(1.1);
+  }
+  .message {
+    margin-top: 30px;
+    font-size: 1.5em;
+    display: none;
+    animation: fadeIn 2s forwards;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px);}
+    to { opacity: 1; transform: translateY(0);}
+  }
+  .heart {
+    position: absolute;
+    font-size: 2em;
+    animation: floatUp 4s linear infinite;
+  }
+  @keyframes floatUp {
+    0% { transform: translateY(0) rotate(0deg); opacity:1;}
+    100% { transform: translateY(-800px) rotate(360deg); opacity:0;}
+  }
+</style>
 </head>
 <body>
-  <h1>Our Story</h1>
-  <p>
-    It started with…
-  </p>
+<div class="container">
+  <h1>💖 Nourhan 💖</h1>
+  <p>Click the heart below to see a surprise for Valentine's Day!</p>
+  <button onclick="showMessage()">❤️ Click Me ❤️</button>
+  <div class="message" id="message">
+    <p>Will you be my Valentine on Feb 13, 2026? 💌</p>
+    <p>I love you so much! 💖</p>
+  </div>
+</div>
+
+<script>
+  function showMessage() {
+    document.getElementById('message').style.display = 'block';
+    createHearts();
+  }
+
+  function createHearts() {
+    for (let i = 0; i < 30; i++) {
+      let heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * window.innerWidth + 'px';
+      heart.style.animationDuration = 3 + Math.random() * 3 + 's';
+      heart.innerText = '❤️';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 4000);
+    }
+  }
+</script>
 </body>
 </html>
